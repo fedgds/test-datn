@@ -1,8 +1,8 @@
 import { createContext } from "react";
 import AuthStore from "./authStore"
 import { useContext } from "react";
-// import CustomerStore from "./customerStore";
-// import DialogStore from "./dialogStore";
+import CustomerStore from "./customerStore";
+import DialogStore from "./dialogStore";
 // import ProductStore from "./productStore";
 // import AlertStore from "./alertStore";
 // import OrderStore from "./orderStore";
@@ -15,28 +15,28 @@ if (process.env.NODE_ENV === "development") {
 
 export interface IRootStore {
     authStore: AuthStore;
-    // customerStore: CustomerStore;
+    customerStore: CustomerStore;
+    dialogStore: DialogStore;
     // productStore: ProductStore;
     // orderStore: OrderStore;
-    // dialogStore: DialogStore;
     // alertStore: AlertStore;
     handleError: Function;
 }
 
 export class RootStore implements IRootStore{
     authStore: AuthStore;
-    // customerStore: CustomerStore;
+    customerStore: CustomerStore;
+    dialogStore: DialogStore;
     // productStore: ProductStore;
-    // dialogStore: DialogStore;
     // alertStore: AlertStore;
     // orderStore: OrderStore;
 
     constructor() {
        console.log("RootStore")
        this.authStore = new AuthStore(this)
-    //    this.customerStore = new CustomerStore(this)
+       this.customerStore = new CustomerStore(this)
+       this.dialogStore = new DialogStore(this)
     //    this.productStore = new ProductStore(this)
-    //    this.dialogStore = new DialogStore(this)
     //    this.alertStore = new AlertStore(this)
     //    this.orderStore = new OrderStore(this)
     }
